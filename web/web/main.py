@@ -7,14 +7,6 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/get_vm')
-def get_vm():
-    result = subprocess.run(['pwsh', '-c', 'Connect-AzAccount; Get-AzVM'], capture_output=True, text=True)
-    if result.returncode == 0:
-        return result.stdout
-    else:
-        return f"Error: {result.stderr}"
-
 if __name__ == "__main__":
     # Only for debugging while developing
     app.run(host='0.0.0.0', debug=True, port=80)
