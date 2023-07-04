@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/powershell:latest
+FROM tiangolo/uwsgi-nginx-flask:python3.6
 
 COPY ./requirements.txt /app/requirements.txt
 
