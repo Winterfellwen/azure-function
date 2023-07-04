@@ -12,4 +12,6 @@ RUN apt update && apt install -y powershell
 
 RUN pwsh -Command "Write-Host 'Hello, World!'"
 
+RUN pwsh -Command "install-module az -force"
+
 ADD ./web /app
