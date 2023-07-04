@@ -1,4 +1,5 @@
 cd /home/azuser/.Azure
+write-host $(gci)
 $keyfile = get-content keystore.cache | ConvertFrom-Json
 $keyfile.keyStoreValue.trim('"')
 $keybase =$keyfile.keyStoreKey | ConvertFrom-json
