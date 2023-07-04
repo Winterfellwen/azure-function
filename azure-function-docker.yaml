@@ -21,7 +21,7 @@ spec:
         "beta.kubernetes.io/os": linux
       containers:
       - name: container-frontend-flask
-        image: docker pull mcr.microsoft.com/powershell:latest
+        image: tiangolo/uwsgi-nginx-flask:python3.6
         ports:
         - containerPort: 80
         resources:
