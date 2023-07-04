@@ -1,4 +1,4 @@
-FROM tiangolo/uwsgi-nginx-flask:python3.11
+FROM docker pull mcr.microsoft.com/powershell:latest
 
 COPY ./requirements.txt /app/requirements.txt
 
