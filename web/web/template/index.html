@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Azure VM Viewer</title>
+    <title>执行 PowerShell 脚本</title>
 </head>
 <body>
-    <h1>Azure VM Viewer</h1>
-    <button onclick="getVM()">Get Azure VMs</button>
-    <div id="result"></div>
+    <h1>执行 PowerShell 脚本</h1>
+    <form action="/execute" method="post">
+        <button type="submit">执行脚本</button>
+    </form>
+    <textarea rows="10" cols="50" readonly id="result"></textarea>
 
     <script>
-        function getVM() {
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", "/get_vm", true);
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    document.getElementById("result").innerHTML = xhr.responseText;
-                }
-            };
-            xhr.send();
-        }
+        const form = document.querySelector('form');
+        const resultTextArea = document.querySelector('#result');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            fetch('/execute', { method: 'POST' })
+                .then(response => response.text())
+                .then(result => {
+                    resultTextArea.value = result;
+                });
+        });
     </script>
 </body>
 </html>
