@@ -1,4 +1,4 @@
-FROM docker pull mcr.microsoft.com/powershell:latest
+FROM mcr.microsoft.com/powershell:latest
 
 COPY ./requirements.txt /app/requirements.txt
 
