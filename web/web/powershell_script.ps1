@@ -8,4 +8,5 @@ Connect-AzAccount -ServicePrincipal -TenantId $TenantId -Credential $Credential 
 $result = get-azvm
 get-azvm
 
+write-host "test" 
 write-host $result
