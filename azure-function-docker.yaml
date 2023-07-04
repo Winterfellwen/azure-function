@@ -1,42 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: deploy-backend-powershell
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: app-backend-powershell
-  template:
-    metadata:
-      labels:
-        app: app-backend-powershell
-    spec:
-      nodeSelector:
-        "beta.kubernetes.io/os": linux
-      containers:
-      - name: container-backend-powershell
-        image: mcr.microsoft.com/powershell:latest
-        env:
-        - name: ALLOW_EMPTY_PASSWORD
-          value: "yes"
-        ports:
-        - containerPort: 8888
-          name: powershell
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: service-backend-powershell
-spec:
-  ports:
-  - port: 6379
-  selector:
-    app: app-backend-powershell
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
   name: deploy-frontend-flask
 spec:
   replicas: 1
@@ -57,7 +21,7 @@ spec:
         "beta.kubernetes.io/os": linux
       containers:
       - name: container-frontend-flask
-        image: tiangolo/uwsgi-nginx-flask:python3.6
+        image: docker pull mcr.microsoft.com/powershell:latest
         ports:
         - containerPort: 80
         resources:
